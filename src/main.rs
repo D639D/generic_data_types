@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 struct Point<T> {
     // Один обобщённый вид
     x: T,
@@ -38,12 +40,11 @@ impl<X1, Y1> Point3<X1, Y1> {
     }
 }
 
-fn largest<T>(list: &[T]) -> &T {
+fn largest<T: Display + PartialOrd>(list: &[T]) -> &T {
     // Один обобщённый вид для функции
     let mut largest = &list[0];
 
     for item in list {
-        // Код не компилируетя так как нужно нужно сравнивать только те значения
         // ..которые можно упорядочить
         if item > largest {
             largest = item;
